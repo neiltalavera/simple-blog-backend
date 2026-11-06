@@ -31,10 +31,16 @@ class CommentCreate(BaseModel):
     body: str = Field(min_length=1, max_length=5000)
 
 
+class CommentAuthorRead(BaseModel):
+    username: str
+    model_config = ConfigDict(from_attributes=True)
+
+
 class CommentRead(BaseModel):
     id: int
     post_id: int
     author_id: int
+    author: CommentAuthorRead
     body: str
     created_at: datetime
     model_config = ConfigDict(from_attributes=True)
