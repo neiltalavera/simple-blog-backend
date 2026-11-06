@@ -1,5 +1,6 @@
 .env
 .venv/
+.lambda-build/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -9,3 +10,4 @@ htmlcov/
 dist/
 build/
 new_run.txt
+lambda-deployment.zip
