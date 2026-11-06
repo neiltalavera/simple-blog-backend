@@ -8,6 +8,8 @@ from app.db.base import Base
 from app.models import AccessRequest, Comment, Post, Reaction, User  # noqa: F401
 
 config = context.config
+# Run schema changes through Neon’s direct endpoint. The pooled endpoint is
+# intended for short-lived application queries and may not support migrations.
 config.set_main_option("sqlalchemy.url", settings.database_url.replace("%", "%%"))
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
