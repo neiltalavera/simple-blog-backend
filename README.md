@@ -14,14 +14,19 @@ frontend service: [simple-blog-frontend](https://github.com/neiltalavera/simple-
    pip install -r requirements.txt
    ```
 
-2. Start PostgreSQL and configure the app:
+2. Configure the app:
 
    ```powershell
    docker compose up -d db
    Copy-Item .env.example .env
    ```
 
-   Set `JWT_SECRET_KEY` in `.env` to a long random value before running the API.
+   For Neon, set `DATABASE_URL` to the **direct** connection string and
+   `DATABASE_URL_POOLED` to the **pooled** connection string from the Neon
+   dashboard. Both should include `sslmode=require`. The API uses the pooled
+   URL; Alembic uses the direct URL when it creates or upgrades tables. For a
+   local Docker database, leave `DATABASE_URL_POOLED` empty. Set
+   `JWT_SECRET_KEY` in `.env` to a long random value before running the API.
 
 3. Create the tables and start the server:
 
