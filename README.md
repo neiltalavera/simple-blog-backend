@@ -2,6 +2,8 @@
 
 A small blog backend with user accounts, posts, comments, and one reaction per user per post. FastAPI serves the API, SQLAlchemy talks to PostgreSQL, and Alembic manages schema changes.
 
+frontend service: [simple-blog-frontend](https://github.com/neiltalavera/simple-blog-frontend)
+
 ## Run locally
 
 1. Create and activate a virtual environment, then install dependencies:
