@@ -74,7 +74,7 @@ def delete_post(post_id: int, db: Session = Depends(get_db), current_user: User 
 @router.get("/{post_id}/comments", response_model=list[CommentRead])
 def list_comments(post_id: int, db: Session = Depends(get_db), limit: int = Query(default=50, ge=1, le=100), offset: int = Query(default=0, ge=0)):
     get_post_or_404(post_id, db)
-    return db.scalars(select(Comment).where(Comment.post_id == post_id).order_by(Comment.created_at).offset(offset).limit(limit)).all()
+    return db.scalars(select(Comment).options(joinedload(Comment.author)).where(Comment.post_id == post_id).order_by(Comment.created_at).offset(offset).limit(limit)).all()
 
 
 @router.post("/{post_id}/comments", response_model=CommentRead, status_code=status.HTTP_201_CREATED)

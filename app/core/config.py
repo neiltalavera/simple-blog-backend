@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     jwt_secret_key: str = ""
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
+    discord_webhook_url: str | None = None
+    discord_uid: str | None = None
     cors_origins: list[str] = ["http://localhost:3000"]
     rate_limit: str = "120/minute"
 
